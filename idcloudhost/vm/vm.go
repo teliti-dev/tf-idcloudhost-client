@@ -55,21 +55,23 @@ type VM struct {
 }
 
 type NewVM struct {
-	Backup          bool   `validate:"-" default:"false"`
-	BillingAccount  int    `validate:"-" default:"0"`
-	Description     string `validate:"-"`
-	Disks           int    `validate:"required|int|min:20|max:240"`
-	Username        string `validate:"validateUsername"`
-	InitialPassword string `validate:"required|validatePassword"`
-	OSName          string `validate:"required|validateOSName"`
-	OSVersion       string `validate:"required|validateOSVersion"`
-	PublicKey       string `validate:"-"`
-	Name            string `validate:"required|validateName"`
-	Memory          int    `validate:"required|int|min:1024|max:65536"`
-	SourceReplica   string `validate:"-"`
-	SourceUUID      string `validate:"-"`
-	VCPU            int    `validate:"required|int|min:1|max:16"`
-	ReservePublicIP bool   `validate:"-" default:"true"`
+	Backup               bool   `validate:"-" default:"false"`
+	BillingAccount       int    `validate:"-" default:"0"`
+	Description          string `validate:"-"`
+	Disks                int    `validate:"required|int|min:20|max:240"`
+	Username             string `validate:"validateUsername"`
+	InitialPassword      string `validate:"required|validatePassword"`
+	OSName               string `validate:"required|validateOSName"`
+	OSVersion            string `validate:"required|validateOSVersion"`
+	PublicKey            string `validate:"-"`
+	Name                 string `validate:"required|validateName"`
+	Memory               int    `validate:"required|int|min:1024|max:65536"`
+	SourceReplica        string `validate:"-"`
+	SourceUUID           string `validate:"-"`
+	VCPU                 int    `validate:"required|int|min:1|max:16"`
+	ReservePublicIP      bool   `validate:"-" default:"true"`
+	DesignatedPoolUUID   string `validate:"-"`
+	NetworkUUID          string `validate:"-"`
 }
 
 type ResourcePool struct {
@@ -135,6 +137,12 @@ func (vm *VirtualMachineAPI) Create(v NewVM) error {
 	}
 	if v.SourceUUID != "" {
 		data.Set("source_uuid", v.SourceUUID)
+	}
+	if v.DesignatedPoolUUID != "" {
+		data.Set("designated_pool_uuid", v.DesignatedPoolUUID)
+	}
+	if v.NetworkUUID != "" {
+		data.Set("network_uuid", v.NetworkUUID)
 	}
 	req, err := http.NewRequest("POST", vm.ApiEndpoint,
 		strings.NewReader(data.Encode()))
