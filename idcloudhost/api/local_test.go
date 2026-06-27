@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/vm"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/vm"
 )
 
 // Mock VM client

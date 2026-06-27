@@ -3,14 +3,14 @@ package api
 import (
 	"net/http"
 
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/disk"
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/firewall"
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/floatingip"
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/loadbalancer"
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/network"
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/objectstorage"
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/user"
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/vm"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/disk"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/firewall"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/floatingip"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/loadbalancer"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/network"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/objectstorage"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/user"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/vm"
 )
 
 type APIClient struct {

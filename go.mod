@@ -1,4 +1,4 @@
-module github.com/bapung/idcloudhost-go-client-library
+module github.com/teliti-dev/tf-idcloudhost-client
 
 go 1.19
 

@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/bapung/idcloudhost-go-client-library/idcloudhost/disk"
+	"github.com/teliti-dev/tf-idcloudhost-client/idcloudhost/disk"
 )
 
 type HTTPClient interface {
