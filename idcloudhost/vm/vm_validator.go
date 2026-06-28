@@ -6,12 +6,6 @@ import (
 	"unicode"
 )
 
-var validOS = map[string][]string{
-	"ubuntu": {"16.04", "18.04", "20.04"},
-	"debian": {"9.1"},
-	"centos": {"7.3.1611", "6.9.1611"},
-}
-
 func validateVmName(name string) error {
 	matched, _ := regexp.Match(`^[0-9a-zA-Z][-0-9a-zA-Z]{2,}[0-9a-zA-Z]$`, []byte(name))
 	if matched {
@@ -53,15 +47,6 @@ func validatePassword(pass string) error {
 	return fmt.Errorf("VM validatation failed: password must contain at least one lowercase and one uppercase ASCII letter (a-z, A-Z) and at least one digit (0-9) and has minimum length of 8 characters")
 }
 
-func validateOS(osName string, osVersion string) error {
-	for _, v := range validOS[osName] {
-		if v == osVersion {
-			return nil
-		}
-	}
-	return fmt.Errorf("VM validatation failed: OS %s %s not supported", osName, osVersion)
-}
-
 func validateDisks(disks int) error {
 	if disks < 20 || disks > 240 {
 		return fmt.Errorf("VM validatation failed: ram size must be between 1024 and 65536 MB ")
@@ -100,9 +85,6 @@ func validateVmCreateFields(v *NewVM) error {
 		return err
 	}
 	if err := validatePassword(v.InitialPassword); err != nil {
-		return err
-	}
-	if err := validateOS(v.OSName, v.OSVersion); err != nil {
 		return err
 	}
 
